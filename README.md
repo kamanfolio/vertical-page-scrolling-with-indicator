@@ -1,1 +1,1 @@
-# vertical-page-scrolling-with-indicator
+# Vertical Page Scrolling with Indicator
