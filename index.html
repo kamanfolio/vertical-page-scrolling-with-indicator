@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        margin: 0;
+      }
+      section {
+        height: 100vh;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      section:nth-child(even) {
+        background-color: #000;
+        color: #fff;
+      }
+      p {
+        font-family: "Courier New", Courier, monospace;
+        font-size: 3rem;
+      }
+      .v-progress-bar-container {
+        position: fixed;
+        top: 25%;
+        right: 5%;
+        width: 5px;
+        height: 50vh;
+        transition: 0.3s ease;
+      }
+      .v-progress-bar-bg {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        background-color: gray;
+        border-radius: 5px;
+      }
+      .v-progress {
+        position: absolute;
+        top: 0;
+        height: 0%;
+        width: 100%;
+        background-color: darkorchid;
+      }
+    </style>
+  </head>
+  <body>
+    <section>
+      <p>Section 1</p>
+    </section>
+    <section>
+      <p>Section 2</p>
+    </section>
+    <section>
+      <p>Section 3</p>
+    </section>
+    <section>
+      <p>Section 4</p>
+    </section>
+    <div class="v-progress-bar-container">
+      <div class="v-progress-bar-bg"></div>
+      <div class="v-progress"></div>
+    </div>
+
+    <script>
+      //Vertical Scrollbar Indicator Method 1
+      // let progress = document.querySelector(".v-progress");
+      
+      // function updateProgressBar() {
+      //   progress.style.height = `${getScrollPercentage()}%`;
+      //   requestAnimationFrame(updateProgressBar);
+      // }
+
+      // function getScrollPercentage() {
+      //   return ((window.scrollY) / (document.body.scrollHeight - window.innerHeight) * 100);
+      // }
+
+      // updateProgressBar();
+
+      //Vertical Scrollbar Indicator Method 2
+      window.onscroll = function () {
+        let windowScroll = document.documentElement.scrollTop;
+        let windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        let scrollAmount = (windowScroll / windowHeight) * 100;
+        document.querySelector(".v-progress").style.height = scrollAmount + "%";
+      };
+
+    </script>
+  </body>
+</html>
